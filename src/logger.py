@@ -1,10 +1,10 @@
 from datetime import date
 
 dato = date.today()
-f = open("../" + str(dato) + ".txt", "w+")
+f = open("../Logs/" + str(dato) + ".txt", "w+")
 
-def init_log():
-    f.write("---" + str(dato) + "---")
+def init_log(start, slut):
+    f.write("---" + str(dato) + "---\nOpgave ID fra " + str(start) + " til " + str(slut) + ".")
 
 def log(s):
     print(s)

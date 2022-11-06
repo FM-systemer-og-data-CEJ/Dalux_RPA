@@ -8,8 +8,9 @@ from logger import *
 
 # Får workorder som argument.
 workorder_id = int(sys.argv[1])
+slut_id = int(sys.argv[2])
 
-init_log()
+init_log(workorder_id, slut_id)
 
 # URL samt nøgle til API.
 baseURL = 'https://fm-stage-api.dalux.com/api/v1'
@@ -18,7 +19,7 @@ headers = {
 }
 
 # TODO: Find condition til at stoppe loop.
-while workorder_id < 512148:
+while workorder_id <= slut_id:
     response = requests.request("Get", baseURL+'/workorders/'+str(workorder_id), headers=headers)
     responseJSON = json.loads(response.content)
 
