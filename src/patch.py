@@ -1,4 +1,6 @@
+import logging
 import requests
+from logger import log
 
 # Patch metode til ean.
 def patch_ean(url, headers, id, ean):
@@ -12,9 +14,9 @@ def patch_ean(url, headers, id, ean):
     }
     response = requests.patch(url+'/workorders/'+str(id), headers=headers, json=payload)
     if response.status_code == 200:
-        print("Opgave blev successfuldt opdateret med ean.")
+        log("Opgave blev successfuldt opdateret med ean.")
     else:
-        print("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
+        log("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
 
 # Patch metode til psp.
 def patch_psp(url, headers, id, psp):
@@ -28,9 +30,9 @@ def patch_psp(url, headers, id, psp):
     }
     response = requests.patch(url+'/workorders/'+str(id), headers=headers, json=payload)
     if response.status_code == 200:
-        print("Opgave blev successfuldt opdateret med psp.")
+        log("Opgave blev successfuldt opdateret med psp.")
     else:
-        print("Opgave kunne ikke opdateres med fejlkode: " + response.status_code)
+        log("Opgave kunne ikke opdateres med fejlkode: " + response.status_code)
 
 # Patch metode til både til både ean og psp.
 def patch_ean_psp(url, headers, id, ean, psp):
@@ -45,6 +47,6 @@ def patch_ean_psp(url, headers, id, ean, psp):
     }
     response = requests.patch(url+'/workorders/'+str(id), headers=headers, json=payload)
     if response.status_code == 200:
-        print("Opgave blev successfuldt opdateret med ean og psp.")
+        log("Opgave blev successfuldt opdateret med ean og psp.")
     else:
-        print("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
+        log("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
