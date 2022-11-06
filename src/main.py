@@ -13,7 +13,7 @@ slut_id = int(sys.argv[2])
 init_log(workorder_id, slut_id)
 
 # URL samt nøgle til API.
-baseURL = 'https://fm-stage-api.dalux.com/api/v1'
+baseURL = 'https://fm-api.dalux.com/api/v1'
 headers = {
     'X-API-KEY':api_key
 }
