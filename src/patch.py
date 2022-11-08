@@ -32,7 +32,7 @@ def patch_psp(url, headers, id, psp):
     if response.status_code == 200:
         log("Opgave blev successfuldt opdateret med psp.")
     else:
-        log("Opgave kunne ikke opdateres med fejlkode: " + response.status_code)
+        log("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
 
 # Patch metode til både til både ean og psp.
 def patch_ean_psp(url, headers, id, ean, psp):

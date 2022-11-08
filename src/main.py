@@ -54,3 +54,4 @@ while workorder_id <= slut_id:
         log("\nWorkorder " + str(workorder_id) + " blev ikke fundet")
 
     workorder_id += 1
+print("Færdig\n")
