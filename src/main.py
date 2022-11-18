@@ -1,6 +1,7 @@
 import sys
 import requests
 import json
+import time
 from parser import *
 from patch import *
 from config import api_key
@@ -19,7 +20,7 @@ headers = {
 }
 
 # TODO: Find condition til at stoppe loop.
-while workorder_id <= slut_id:
+while 1:
     response = requests.request("Get", baseURL+'/workorders/'+str(workorder_id), headers=headers)
     responseJSON = json.loads(response.content)
 
@@ -50,8 +51,11 @@ while workorder_id <= slut_id:
         else:
             log("Der findes allerede et ean og/eller psp nummer på denne opgave.\n")
 
+        workorder_id += 1
     else:
-        log("\nWorkorder " + str(workorder_id) + " blev ikke fundet")
+#        log("\nWorkorder " + str(workorder_id) + " blev ikke fundet")
+          time.sleep(10)
+          print("Venter i 10 sekunder") 
 
-    workorder_id += 1
+#    workorder_id += 1
 print("Færdig\n")
