@@ -1,11 +1,7 @@
-from datetime import date
+import datetime
 
-dato = date.today()
-f = open("../Logs/" + str(dato) + ".txt", "w+")
-
-def init_log(start, slut):
-    f.write("---" + str(dato) + "---\nOpgave ID fra " + str(start) + " til " + str(slut) + ".")
+f = open("../log.txt", "a")
 
 def log(s):
-    #f.write(s)
-    print(s)
+    dato = datetime.datetime.now()
+    f.write("Kigget paa workorder " + s + " d.: " + str(dato) + "\n") 

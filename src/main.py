@@ -9,9 +9,6 @@ from logger import *
 
 # Får workorder som argument.
 workorder_id = int(sys.argv[1])
-slut_id = int(sys.argv[2])
-
-init_log(workorder_id, slut_id)
 
 # URL samt nøgle til API.
 baseURL = 'https://fm-api.dalux.com/api/v1'
@@ -19,13 +16,13 @@ headers = {
     'X-API-KEY':api_key
 }
 
-# TODO: Find condition til at stoppe loop.
 while 1:
     response = requests.request("Get", baseURL+'/workorders/'+str(workorder_id), headers=headers)
     responseJSON = json.loads(response.content)
 
     if response.status_code == 200:
-        log("\n\nWorkorder " + str(workorder_id) + " blev fundet.\n")
+        print("\nWorkorder " + str(workorder_id) + " blev fundet.")
+        log(str(workorder_id))
 
         # Find ud af om ean eller psp allerede er sat.
         skal_opdateres = True;
@@ -39,23 +36,19 @@ while 1:
             psp = find_psp_indmelding(responseJSON)
 
             if ean == None and psp == None:
-                log("Der findes intet ean eller psp i indmeldninger.")
+                print("Der findes intet ean eller psp i indmeldninger.")
             elif ean == None:
-                log("Der findes intet ean i indmeldninger.")
+                print("Der findes intet ean i indmeldninger.")
                 patch_psp(baseURL, headers, workorder_id, psp)
             elif psp == None:
-                log("Der findes intet psp i indmeldninger.")
+                print("Der findes intet psp i indmeldninger.")
                 patch_ean(baseURL, headers, workorder_id, ean)
             else:
                 patch_ean_psp(baseURL, headers, workorder_id, ean, psp)
         else:
-            log("Der findes allerede et ean og/eller psp nummer på denne opgave.\n")
+            print("Der findes allerede et ean og/eller psp nummer på denne opgave.")
 
         workorder_id += 1
     else:
-#        log("\nWorkorder " + str(workorder_id) + " blev ikke fundet")
-          time.sleep(10)
-          print("Venter i 10 sekunder") 
-
-#    workorder_id += 1
-print("Færdig\n")
+        print("Venter i 10 sekunder og tjekker om der er kommet en ny indmelding.") 
+        time.sleep(10)
