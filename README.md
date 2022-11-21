@@ -10,7 +10,7 @@ Programmet skal konfigurers i filen `config.py` og her skal din API nøgle samt 
 
 Du kan nu køre programmet med følgende kommando `python3 src/main.py [id]` hvor `id` er det ID du ønsker programmet starter fra.
 
-Alternativt kan programmet køres i baggrunden på maskinen med `./run.sh`
+Alternativt kan programmet køres i baggrunden på maskinen med `./run.sh [id]` hvor `id` er det ID du ønsker programmet starter fra.
 
 ## Log
 En log fil med navnet `workorder.log` genereres og her gemmes der dato med tidsstempel på hvornår en given opgave er blevet behandlet.
