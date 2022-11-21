@@ -5,7 +5,11 @@ import time
 from parser import *
 from patch import *
 from config import api_key
-from logger import *
+import logging
+import datetime
+
+# Sætter log'en.
+logging.basicConfig(filename='workorder.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
 # Får workorder som argument.
 workorder_id = int(sys.argv[1])
@@ -22,9 +26,9 @@ while 1:
 
     if response.status_code == 200:
         print("\nWorkorder " + str(workorder_id) + " blev fundet.")
-        log(str(workorder_id))
-
-        # Find ud af om ean eller psp allerede er sat.
+        logging.info("\tWorkorder: " + str(workorder_id))
+        
+        # Workorder skal ikke opdateres hvis der allerede findes et EAN / PSP i historikken.
         skal_opdateres = True;
         for match in parser.parse("data[*].history[*].lines[?(@.title=='EAN/GLN')]").find(responseJSON):
             skal_opdateres = False
@@ -47,7 +51,7 @@ while 1:
                 patch_ean_psp(baseURL, headers, workorder_id, ean, psp)
         else:
             print("Der findes allerede et ean og/eller psp nummer på denne opgave.")
-
+            
         workorder_id += 1
     else:
         print("Venter i 10 sekunder og tjekker om der er kommet en ny indmelding.") 
