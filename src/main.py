@@ -5,6 +5,7 @@ import time
 from parser import *
 from patch import *
 from config import api_key
+from requesting import *
 import logging
 import datetime
 
@@ -14,17 +15,13 @@ logging.basicConfig(filename='workorder.log', level=logging.INFO, format='%(asct
 # Får workorder som argument.
 workorder_id = int(sys.argv[1])
 
-# URL samt nøgle til API.
-baseURL = 'https://fm-api.dalux.com/api/v1'
-headers = {
-    'X-API-KEY':api_key
-}
-
+total_sleep = 0
 while 1:
-    response = requests.request("Get", baseURL+'/workorders/'+str(workorder_id), headers=headers)
+    response = get_workorder(workorder_id)
     responseJSON = json.loads(response.content)
 
     if response.status_code == 200:
+        total_sleep = 0
         print("\nWorkorder " + str(workorder_id) + " blev fundet.")
         logging.info("\tWorkorder: " + str(workorder_id))
         
@@ -54,5 +51,11 @@ while 1:
             
         workorder_id += 1
     else:
-        print("Venter i 10 sekunder og tjekker om der er kommet en ny indmelding.") 
+        print("Sleeping for 10 seconds. Total sleep time: " + str(total_sleep) + " seconds.") 
         time.sleep(10)
+        total_sleep += 10
+        if (total_sleep >= 60):
+            print("Peeking...")
+            workorder_id = peek(workorder_id)
+            print("Continuing at: " + str(workorder_id))
+            
