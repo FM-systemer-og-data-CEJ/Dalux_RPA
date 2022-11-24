@@ -5,7 +5,7 @@ import time
 from parser import *
 from patch import *
 from config import api_key
-from requesting import *
+from fetch import *
 import logging
 import datetime
 
