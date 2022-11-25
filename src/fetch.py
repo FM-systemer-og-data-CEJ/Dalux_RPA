@@ -1,6 +1,6 @@
 import requests
 from config import *
-import json
+import logging
 
 # URL samt nøgle til API.
 baseURL = 'https://fm-api.dalux.com/api/v1'
@@ -9,7 +9,16 @@ headers = {
 }
 
 def get_workorder(w_id):
-    return requests.request("Get", baseURL+'/workorders/'+str(w_id), headers=headers)
+    # Det lader til at dalux time-out'er eller sender noget ulæseligt. Efter 3 forsøg lukkes programmet.
+    i = 1
+    while (i <= 3):
+        try:
+            return requests.request("Get", baseURL+'/workorders/'+str(w_id), headers=headers)
+        except:
+            print(i + " mislykket forsøg på at få fat på " + str(w_id))
+    i += 1
+    logging.info("Kunne ikke få fat på ID: " + str(w_id) + "efter 3 forsøg.")
+    exit()
 
 def peek(w_id):
     for i in range (1, 6):

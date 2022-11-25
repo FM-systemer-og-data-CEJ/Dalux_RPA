@@ -3,7 +3,6 @@ import json
 import time
 from parser import *
 from patch import *
-from config import api_key
 from fetch import *
 import logging
 
