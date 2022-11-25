@@ -11,9 +11,8 @@ headers = {
 def get_workorder(w_id):
     return requests.request("Get", baseURL+'/workorders/'+str(w_id), headers=headers)
 
-
 def peek(w_id):
-    for i in range (0, 6):
+    for i in range (1, 6):
         response = get_workorder(w_id + i)
         if response.status_code == 200:
             return w_id + i

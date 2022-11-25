@@ -1,5 +1,4 @@
 import sys
-import requests
 import json
 import time
 from parser import *
@@ -7,7 +6,6 @@ from patch import *
 from config import api_key
 from fetch import *
 import logging
-import datetime
 
 # Sætter log'en.
 logging.basicConfig(filename='workorder.log', level=logging.INFO, format='%(asctime)s %(message)s')
