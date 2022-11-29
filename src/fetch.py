@@ -15,7 +15,7 @@ def get_workorder(w_id):
         try:
             return requests.request("Get", baseURL+'/workorders/'+str(w_id), headers=headers)
         except:
-            print(i + " mislykket forsøg på at få fat på " + str(w_id))
+            print(str(i) + " mislykket forsøg på at få fat på " + str(w_id))
     i += 1
     logging.info("Kunne ikke få fat på ID: " + str(w_id) + "efter 3 forsøg.")
     exit()
