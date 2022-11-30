@@ -14,9 +14,13 @@ workorder_id = int(sys.argv[1])
 
 total_sleep = 0
 while 1:
-    response = get_workorder(workorder_id)
-    responseJSON = json.loads(response.content)
-
+    try:
+        response = get_workorder(workorder_id)
+        responseJSON = json.loads(response.content)
+    except:
+        logging.info("Der opstod en fejl med workorder: " + str(workorder_id))
+        continue
+        
     if response.status_code == 200:
         total_sleep = 0
         print("\nWorkorder " + str(workorder_id) + " blev fundet.")

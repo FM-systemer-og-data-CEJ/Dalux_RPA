@@ -9,16 +9,7 @@ headers = {
 }
 
 def get_workorder(w_id):
-    # Det lader til at dalux time-out'er eller sender noget ulæseligt. Efter 3 forsøg lukkes programmet.
-    i = 1
-    while (i <= 3):
-        try:
-            return requests.request("Get", baseURL+'/workorders/'+str(w_id), headers=headers)
-        except:
-            print(str(i) + " mislykket forsøg på at få fat på " + str(w_id))
-    i += 1
-    logging.info("Kunne ikke få fat på ID: " + str(w_id) + "efter 3 forsøg.")
-    exit()
+    return requests.request("Get", baseURL+'/workorders/'+str(w_id), headers=headers)
 
 def peek(w_id):
     for i in range (1, 6):
