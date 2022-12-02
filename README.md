@@ -6,11 +6,10 @@ Dette python program opdatere opgaver's EAN/GLN og Omkostningssted (PSP) i
 dalux med det som findes i indmeldinger med tilsvarende ID.
 
 ## Kørsel
-Programmet skal konfigurers i filen `config.py` og her skal din API nøgle samt brugernavnet til din computer indtastes.
+Programmet skal konfigurers i filen `config.py` og her skal din API nøgle indtastes. Derudover kan du indtaste de email-adresser
+som skal modtage en email hvis robotten crasher i emails.txt. 
 
-Du kan nu køre programmet med følgende kommando `python3 src/main.py [id]` hvor `id` er det ID du ønsker programmet starter fra.
-
-Alternativt kan programmet køres i baggrunden på maskinen med `./run.sh [id]` hvor `id` er det ID du ønsker programmet starter fra.
+Programmet køres i baggrunden på maskinen med `./run.sh [id]` hvor `id` er det ID du ønsker programmet starter fra.
 
 ## Log
 En log fil med navnet `workorder.log` genereres og her gemmes der dato med tidsstempel på hvornår en given opgave er blevet behandlet.
