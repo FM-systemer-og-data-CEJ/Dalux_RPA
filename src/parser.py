@@ -1,9 +1,4 @@
 import sys
-from config import pc_brugernavn
-
-# Tilføjer json bibliotek til path.
-sys.path.append('C:\\Users\\' + pc_brugernavn + '\\AppData\\Roaming\\Python\\Python310\\site-packages')
-
 from jsonpath_ng.ext import parser
 
 # Retunere det sidst tilføjet EAN-nummer i historiken, hvis der findes et.
