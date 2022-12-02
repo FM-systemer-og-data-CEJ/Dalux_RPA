@@ -1,2 +1,1 @@
-api_key = 'nøgle'
-pc_brugernavn = 'brugernavn'
+api_key = 'din api nøgle'
