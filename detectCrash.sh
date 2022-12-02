@@ -5,7 +5,7 @@ do
     then
         sleep 10
     else
-        echo "Indmelding til opgave robotten er crashet." | mailx -s "Crashed detected" $(cat emails.txt) 
+        echo "Indmelding til opgave robotten er crashet." | mailx -s "Crash detected" $(cat emails.txt) 
         exit 0
     fi
 done
