@@ -18,7 +18,6 @@ while 1:
         response = get_workorder(workorder_id)
         responseJSON = json.loads(response.content)
     except:
-        logging.info("Der opstod en fejl med workorder: " + str(workorder_id))
         continue
         
     if response.status_code == 200:
