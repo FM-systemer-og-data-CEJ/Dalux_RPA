@@ -23,7 +23,7 @@ while 1:
     if response.status_code == 200:
         total_sleep = 0
         print("\nWorkorder " + str(workorder_id) + " blev fundet.")
-        logging.info("\tWorkorder: " + str(workorder_id))
+        #logging.info("\tWorkorder: " + str(workorder_id))
         
         # Workorder skal ikke opdateres hvis der allerede findes et EAN / PSP i historikken.
         skal_opdateres = True;
@@ -41,13 +41,17 @@ while 1:
             elif ean == None:
                 print("Der findes intet ean i indmeldninger.")
                 patch_psp(baseURL, headers, workorder_id, psp)
+                logging.info("\tWorkorder: " + str(workorder_id) + ", patched PSP.")
             elif psp == None:
                 print("Der findes intet psp i indmeldninger.")
                 patch_ean(baseURL, headers, workorder_id, ean)
+                logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN.")
             else:
                 patch_ean_psp(baseURL, headers, workorder_id, ean, psp)
+                logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN & PSP.")
         else:
             print("Der findes allerede et ean og/eller psp nummer på denne opgave.")
+            logging.info("\tWorkorder: " + str(workorder_id) + ", blev scannet.")
             
         workorder_id += 1
     else:
