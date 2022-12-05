@@ -38,6 +38,7 @@ while 1:
 
             if ean == None and psp == None:
                 print("Der findes intet ean eller psp i indmeldninger.")
+                logging.info("\tWorkorder: " + str(workorder_id) + ", intet i indmeldninger.")
             elif ean == None:
                 print("Der findes intet ean i indmeldninger.")
                 patch_psp(baseURL, headers, workorder_id, psp)
@@ -51,7 +52,7 @@ while 1:
                 logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN & PSP.")
         else:
             print("Der findes allerede et ean og/eller psp nummer på denne opgave.")
-            logging.info("\tWorkorder: " + str(workorder_id) + ", blev scannet.")
+            logging.info("\tWorkorder: " + str(workorder_id) + ", har allerede ean og/eller psp.")
             
         workorder_id += 1
     else:
