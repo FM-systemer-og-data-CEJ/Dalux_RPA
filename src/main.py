@@ -34,7 +34,7 @@ while 1:
     
         if ean_skal_opdateres:
             ean = find_ean_indmelding(responseJSON)
-        if psp_skal_opdateres
+        if psp_skal_opdateres:
             psp = find_psp_indmelding(responseJSON)
             
         if ean == None and psp == None:
