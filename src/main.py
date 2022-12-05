@@ -23,36 +23,34 @@ while 1:
     if response.status_code == 200:
         total_sleep = 0
         print("\nWorkorder " + str(workorder_id) + " blev fundet.")
-        #logging.info("\tWorkorder: " + str(workorder_id))
         
         # Workorder skal ikke opdateres hvis der allerede findes et EAN / PSP i historikken.
-        skal_opdateres = True;
+        ean_skal_opdateres = True
+        psp_skal_opdateres = True
         for match in parser.parse("data[*].history[*].lines[?(@.title=='EAN/GLN')]").find(responseJSON):
-            skal_opdateres = False
+            ean_skal_opdateres = False
         for match in parser.parse("data[*].history[*].lines[?(@.title=='Omk.sted / PSP')]").find(responseJSON):
-            skal_opdateres = False
+            psp_skal_opdateres = False
     
-        if skal_opdateres:
+        if ean_skal_opdateres:
             ean = find_ean_indmelding(responseJSON)
+        if psp_skal_opdateres
             psp = find_psp_indmelding(responseJSON)
-
-            if ean == None and psp == None:
-                print("Der findes intet ean eller psp i indmeldninger.")
-                logging.info("\tWorkorder: " + str(workorder_id) + ", intet i indmeldninger.")
-            elif ean == None:
-                print("Der findes intet ean i indmeldninger.")
-                patch_psp(baseURL, headers, workorder_id, psp)
-                logging.info("\tWorkorder: " + str(workorder_id) + ", patched PSP.")
-            elif psp == None:
-                print("Der findes intet psp i indmeldninger.")
-                patch_ean(baseURL, headers, workorder_id, ean)
-                logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN.")
-            else:
-                patch_ean_psp(baseURL, headers, workorder_id, ean, psp)
-                logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN & PSP.")
+            
+        if ean == None and psp == None:
+            print("Der findes intet ean eller psp i indmeldninger.")
+            logging.info("\tWorkorder: " + str(workorder_id) + ", har intet i indmeldninger.")
+        elif ean == None:
+            print("Der findes intet ean i indmeldninger.")
+            patch_psp(baseURL, headers, workorder_id, psp)
+            logging.info("\tWorkorder: " + str(workorder_id) + ", patched PSP.")
+        elif psp == None:
+            print("Der findes intet psp i indmeldninger.")
+            patch_ean(baseURL, headers, workorder_id, ean)
+            logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN.")
         else:
-            print("Der findes allerede et ean og/eller psp nummer på denne opgave.")
-            logging.info("\tWorkorder: " + str(workorder_id) + ", har allerede ean og/eller psp.")
+            patch_ean_psp(baseURL, headers, workorder_id, ean, psp)
+            logging.info("\tWorkorder: " + str(workorder_id) + ", patched EAN & PSP.")
             
         workorder_id += 1
     else:
