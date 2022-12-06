@@ -26,7 +26,7 @@ def since_hours(h):
                 e_sum += 1
             elif(split[2][1:13] == 'patched PSP.'):
                 p_sum += 1
-            elif(split[2][18] == 'patched EAN & PSP.'):
+            elif(split[2][1:19] == 'patched EAN & PSP.'):
                 e_sum += 1
                 p_sum += 1
         
