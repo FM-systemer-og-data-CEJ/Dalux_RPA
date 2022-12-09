@@ -1,4 +1,7 @@
-setup/emails.txt
+/setup/emails.txt
+/setup/indmeldelse.service
+/setup/run
+/src/config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
