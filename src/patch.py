@@ -1,4 +1,3 @@
-import logging
 import requests
 
 # Patch metode til ean.

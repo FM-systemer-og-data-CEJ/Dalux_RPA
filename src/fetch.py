@@ -1,6 +1,5 @@
 import requests
 from config import *
-import logging
 
 # URL samt nøgle til API.
 baseURL = 'https://fm-api.dalux.com/api/v1'
