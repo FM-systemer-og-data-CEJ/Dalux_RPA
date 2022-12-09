@@ -1,0 +1,12 @@
+#!/bin/bash
+WDIR=$HOME/DIN/PATH/TIL/Indmelding_til_opgave
+cd $WDIR
+
+LASTLINES=$(tail -5 workorder.log)
+cat setup/emails.txt | while read email
+do
+    echo -e "De seneste fem linjer i loggen:\n\n${LASTLINES}\n\nGenstarter: $(date)" | mail -s "Crash detected" $email  
+done
+
+LASTINDEX=$(tail -1 workorder.log | awk '{print $4}' | tr -d ",")
+python3 src/main.py $(($LASTINDEX+1)) > run.log
