@@ -1,0 +1,14 @@
+[Unit]
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/home/din/path/til/Indmelding_til_opgave/setup/run
+WorkingDirectory=/home/din/path/til/Indmelding_til_opgave/setup
+User=bruger
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardInput=syslog
+SystemIdentifier=%n
