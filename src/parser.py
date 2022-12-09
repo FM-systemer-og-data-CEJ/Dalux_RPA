@@ -1,4 +1,3 @@
-import sys
 from jsonpath_ng.ext import parser
 
 # Retunere det sidst tilføjet EAN-nummer i historiken, hvis der findes et.
