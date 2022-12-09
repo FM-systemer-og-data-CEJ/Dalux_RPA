@@ -31,7 +31,9 @@ while 1:
             ean_skal_opdateres = False
         for match in parser.parse("data[*].history[*].lines[?(@.title=='Omk.sted / PSP')]").find(responseJSON):
             psp_skal_opdateres = False
-    
+
+        ean = None
+        psp = None 
         if ean_skal_opdateres:
             ean = find_ean_indmelding(responseJSON)
         if psp_skal_opdateres:
