@@ -19,3 +19,6 @@ Programmet skal dernæst sættes op ved at kopiere `setup/indmeldelse.service` t
 Programmet genere to log-filer.
 * `workorder.log` som indeholder de workorders, der bliver behandlet samt evt. opdateringer og et tidsstempel.
 * `run.log` som indeholder en komplet log.
+
+## Statestik
+Du kan se en oversigt over hvor mange opgaver, der er blevet behandlet og hvor man EAN og PSP der er blevet opdateret med `python3 src/stats.py`
