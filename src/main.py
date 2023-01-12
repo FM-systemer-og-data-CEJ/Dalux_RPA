@@ -56,10 +56,10 @@ while 1:
             
         workorder_id += 1
     else:
-        print("Sleeping for 10 seconds. Total sleep time: " + str(total_sleep) + " seconds.") 
-        time.sleep(10)
-        total_sleep += 10
-        if (total_sleep % 60 == 0):
+        print("Sleeping for 30 seconds. Total sleep time: " + str(total_sleep) + " seconds.") 
+        time.sleep(30)
+        total_sleep += 30
+        if (total_sleep % 300 == 0):
             print("Peeking...")
             workorder_id = peek(workorder_id)
             print("Continuing at: " + str(workorder_id))
