@@ -1,0 +1,26 @@
+{
+    "buildings":[
+        {
+        "buildingID": 901,
+        "rooms": [{
+            "roomID":123,
+            "EAN":555
+        },
+        {
+            "roomID":124,
+            "EAN":556
+        }]
+        },
+        {
+        "buildingID": 512,
+        "rooms": [{
+            "roomID":70855,
+            "EAN":777
+        },
+        {
+            "roomID":111,
+            "EAN":888
+        }]
+        }
+    ]
+}
