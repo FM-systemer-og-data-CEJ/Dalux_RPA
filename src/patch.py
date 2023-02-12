@@ -12,7 +12,7 @@ def patch_ean(url, headers, id, ean):
     }
     response = requests.patch(url+'/workorders/'+str(id), headers=headers, json=payload)
     if response.status_code == 200:
-        print("Opgave blev successfuldt opdateret med ean.")
+        print("Opgave blev successrigt opdateret med EAN.")
     else:
         print("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
 
@@ -28,7 +28,7 @@ def patch_psp(url, headers, id, psp):
     }
     response = requests.patch(url+'/workorders/'+str(id), headers=headers, json=payload)
     if response.status_code == 200:
-        print("Opgave blev successfuldt opdateret med psp.")
+        print("Opgave blev successrigt opdateret med PSP.")
     else:
         print("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
 
@@ -45,6 +45,6 @@ def patch_ean_psp(url, headers, id, ean, psp):
     }
     response = requests.patch(url+'/workorders/'+str(id), headers=headers, json=payload)
     if response.status_code == 200:
-        print("Opgave blev successfuldt opdateret med ean og psp.")
+        print("Opgave blev successfuldt opdateret med EAN og PSP.")
     else:
         print("Opgave kunne ikke opdateres med fejlkode: " + str(response.status_code))
