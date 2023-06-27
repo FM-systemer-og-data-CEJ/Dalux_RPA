@@ -1,0 +1,34 @@
+from Utils.parserS import parser, find_ean_indmelding, find_psp_indmelding
+from Utils.log import setup_logger
+from Utils.patch import patch_ean_psp, patch_ean, patch_psp
+from Utils.fetch import baseURL, headers
+
+# Opretter en log.
+main_log = setup_logger("main", "workorder.log")
+
+def EAN_PSP_RPA(w_id, json):
+    ean_skal_opdateres = True
+    psp_skal_opdateres = True
+    for match in parser.parse("data[*].history[*].lines[?(@.title=='EAN/GLN')]").find(json):
+        ean_skal_opdateres = False
+    for match in parser.parse("data[*].history[*].lines[?(@.title=='Omk.sted / PSP')]").find(json):
+        psp_skal_opdateres = False
+
+    ean = None
+    psp = None
+    if ean_skal_opdateres:
+        ean = find_ean_indmelding(json)
+    if psp_skal_opdateres:
+        psp = find_psp_indmelding(json)
+
+    if ean == None and psp == None:
+        main_log.info("\tWorkorder: " + str(w_id) + ", har intet i indmeldninger.")
+    elif ean == None:
+        patch_psp(baseURL, headers, w_id, psp)
+        main_log.info("\tWorkorder: " + str(w_id) + ", patched PSP.")
+    elif psp == None:
+        patch_ean(baseURL, headers, w_id, ean)
+        main_log.info("\tWorkorder: " + str(w_id) + ", patched EAN.")
+    else:
+        patch_ean_psp(baseURL, headers, w_id, ean, psp)
+        main_log.info("\tWorkorder: " + str(w_id) + ", patched EAN & PSP.")
