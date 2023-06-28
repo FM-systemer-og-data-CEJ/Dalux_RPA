@@ -1,6 +1,6 @@
 import requests
 import json
-from config import api_key
+from Utils.config import api_key
 from Utils.log import setup_logger
 
 # URL samt nøgle til API.
