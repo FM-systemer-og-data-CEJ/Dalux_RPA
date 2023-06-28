@@ -1,0 +1,14 @@
+[Unit]
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/home/your/path/Dalux_RPA/setup/run
+WorkingDirectory=/home/your/path/regionh/Dalux_RPA/setup
+User=you-user
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardInput=syslog
+SystemIdentifier=%n

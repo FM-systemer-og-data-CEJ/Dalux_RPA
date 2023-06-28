@@ -1,0 +1,11 @@
+The last line in this file should contain
+what modes the RPA should be running. An
+overview of the modes are seen below:
++---------------------+
+| Name      | Option  |
++---------------------+
+| EAN / PSP | -E      |
+| ROOM      | -R      |
++---------------------+
+
+\-E

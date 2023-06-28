@@ -1,12 +1,7 @@
 #!/bin/bash
-WDIR=$HOME/DIN/PATH/TIL/Indmelding_til_opgave
+WDIR=$HOME/regionh/Dalux_RPA
 cd $WDIR
 
-LASTLINES=$(tail -5 workorder.log)
-cat setup/emails.txt | while read email
-do
-    echo -e "De seneste fem linjer i loggen:\n\n${LASTLINES}\n\nGenstarter: $(date)" | mail -s "Crash detected" $email  
-done
-
-LASTINDEX=$(tail -1 workorder.log | awk '{print $4}' | tr -d ",")
-python3 src/main.py $(($LASTINDEX+1)) > run.log
+LASTINDEX=$(tail -1 EAN_PSP.log | awk '{print $4}' | tr -d ",")
+MODES=$(cat modes.txt | tail -1)
+python3.10 -u src/main.py $(($LASTINDEX+1)) "$(echo $MODES | tr -d '\\')" > run.log
