@@ -8,12 +8,6 @@ from RPAs.EAN_PSP import EAN_PSP_RPA
 workorder_id = int(sys.argv[1])
 flags = sys.argv[2:]
 
-# Writing flags to file. Used when auto restarting program.
-f = open("modes.txt", "w")
-for fl in flags:
-    f.write(fl + "\n")
-f.close()
-
 total_sleep = 0
 peek_counter = 0
 while 1:
