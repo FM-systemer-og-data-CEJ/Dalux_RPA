@@ -24,11 +24,11 @@ def EAN_PSP_RPA(w_id, json):
     if ean == None and psp == None:
         EAN_PSP_log.info("\tWorkorder: " + str(w_id) + ", har intet i indmeldninger.")
     elif ean == None:
-        patch_psp(baseURL, headers, w_id, psp)
+        patch_psp(w_id, psp)
         EAN_PSP_log.info("\tWorkorder: " + str(w_id) + ", patched PSP.")
     elif psp == None:
-        patch_ean(baseURL, headers, w_id, ean)
+        patch_ean(w_id, ean)
         EAN_PSP_log.info("\tWorkorder: " + str(w_id) + ", patched EAN.")
     else:
-        patch_ean_psp(baseURL, headers, w_id, ean, psp)
+        patch_ean_psp(w_id, ean, psp)
         EAN_PSP_log.info("\tWorkorder: " + str(w_id) + ", patched EAN & PSP.")
