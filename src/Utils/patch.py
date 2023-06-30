@@ -11,7 +11,7 @@ def patch_ean(id, ean):
                 ]
         }
     }
-    response = requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
+    requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
 
 # Patch metode til psp.
 def patch_psp(id, psp):
@@ -23,7 +23,7 @@ def patch_psp(id, psp):
                 ]
         }
     }
-    response = requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
+    requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
 
 # Patch metode til både til både ean og psp.
 def patch_ean_psp(id, ean, psp):
@@ -36,17 +36,12 @@ def patch_ean_psp(id, ean, psp):
                 ]
         }
     }
-    response = requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
+    requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
 
 def patch_workorder_with_room(w_id, field):
     payload = {
         'data': {
-            'userDefinedFields':
-                [
-                    field
-                ]
+            'description': field
         }
     }
-    #print(payload)
-    response = requests.patch(baseURL + '/workorders/' + str(w_id), headers=headers, json=payload)
-    print(response.content)
+    requests.patch(baseURL + '/workorders/' + str(w_id), headers=headers, json=payload)
