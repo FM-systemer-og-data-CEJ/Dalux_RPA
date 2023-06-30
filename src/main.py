@@ -3,6 +3,7 @@ import json
 import time
 from Utils.fetch import get_workorder, peek, peek_long
 from RPAs.EAN_PSP import EAN_PSP_RPA
+from RPAs.rum import rum_RPA
 
 # Command line inputs.
 workorder_id = int(sys.argv[1])
@@ -23,6 +24,8 @@ while 1:
             match f:
                 case '-E':
                     EAN_PSP_RPA(workorder_id, responseJSON)
+                case '-R':
+                    rum_RPA(workorder_id, responseJSON)
 
             ############################
             #        More RPA's        #
