@@ -7,7 +7,10 @@ from RPAs.rum import rum_RPA
 
 # Command line inputs.
 workorder_id = int(sys.argv[1])
-flags = sys.argv[2:]
+# For some unknown reason, python sees the arguemnt passed as a string and not two seperate
+# arguments when coming from the shell script.
+flags = sys.argv[2]
+flags = flags.split()
 
 total_sleep = 0
 peek_counter = 0
