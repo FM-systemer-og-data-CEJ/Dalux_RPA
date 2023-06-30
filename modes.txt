@@ -6,6 +6,7 @@ overview of the modes are seen below:
 +---------------------+
 | EAN / PSP | -E      |
 | ROOM      | -R      |
+| Asset     | -A      |
 +---------------------+
 
-\-E
+\-E \-R
