@@ -18,6 +18,9 @@ def get_workorder(w_id):
 def get_room(r_id):
     return requests.request("Get", baseURL+'/rooms/'+str(r_id), headers=headers)
 
+def get_asset(a_id):
+    return requests.request("Get", baseURL+'/assets/'+str(a_id), headers=headers)
+
 # Grundet små spring i ID numre bliver der smukigget på de næste 5. Skulle der findes et
 # returneres dette og programmet kører videre derfra. Starter på 0 da det har vist sig at
 # hvis 2 eller flere workorders bliver oprettet inden for kort tid af hinanden (1-2 sekunder)

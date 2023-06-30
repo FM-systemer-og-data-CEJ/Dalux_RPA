@@ -38,7 +38,7 @@ def patch_ean_psp(id, ean, psp):
     }
     requests.patch(baseURL+'/workorders/'+str(id), headers=headers, json=payload)
 
-def patch_workorder_with_room(w_id, field):
+def patch_workorder_desc(w_id, field):
     payload = {
         'data': {
             'description': field
