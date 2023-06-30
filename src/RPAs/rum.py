@@ -14,9 +14,13 @@ def rum_RPA(w_id, json):
         room = get_room(roomID)
         roomJSON = json.loads(room.content)
 
+        p = None
         for match in parser.parse("data[*].userDefinedFields[?(@.name=='Kritisk rum:')]").find(roomJSON):
             p = match.value['value']
 
-        patch_string = p['name'] + " " + p['value']
-        rum_log.info("\tRum: " + str(roomID) + " er kritisk og tilføjes på workorder: " + str(w_id))
-        patch_workorder_with_room(w_id, patch_string)
+        if p == None:
+            return
+        else:
+            patch_string = p['name'] + " " + p['value']
+            rum_log.info("\tRum: " + str(roomID) + " er kritisk og tilføjes på workorder: " + str(w_id))
+            patch_workorder_with_room(w_id, patch_string)
