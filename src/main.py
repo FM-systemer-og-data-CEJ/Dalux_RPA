@@ -21,7 +21,8 @@ while 1:
         responseJSON = json.loads(response.content)
     except:
         continue
-
+        
+    # ATTENTION. Doesn't work with python version earlier than 3.10
     if response.status_code == 200:
         total_sleep = 0
         for f in flags:
