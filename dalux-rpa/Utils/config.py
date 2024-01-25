@@ -1,1 +1,1 @@
-api_key = 'your-api-key'
+api_key: str = "your-api-key"

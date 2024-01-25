@@ -1,14 +1,17 @@
+from logging import Logger
+from typing import Optional
 from Utils.parserS import parser, find_ean_indmelding, find_psp_indmelding
 from Utils.log import setup_logger
 from Utils.patch import patch_ean_psp, patch_ean, patch_psp
 
 # Opretter en log.
-EAN_PSP_log = setup_logger("main", "EAN_PSP.log")
+EAN_PSP_log: Logger = setup_logger("main", "EAN_PSP.log")
 
 
-def EAN_PSP_RPA(w_id, json):
-    ean_skal_opdateres = True
-    psp_skal_opdateres = True
+def EAN_PSP_RPA(w_id, json) -> None:
+    ean_skal_opdateres: bool = True
+    psp_skal_opdateres: bool = True
+
     for match in parser.parse("data[*].history[*].lines[?(@.title=='EAN/GLN')]").find(
         json
     ):
@@ -18,8 +21,9 @@ def EAN_PSP_RPA(w_id, json):
     ).find(json):
         psp_skal_opdateres = False
 
-    ean = None
-    psp = None
+    ean: Optional[int] = None
+    psp: Optional[int] = None
+
     if ean_skal_opdateres:
         ean = find_ean_indmelding(json)
     if psp_skal_opdateres:

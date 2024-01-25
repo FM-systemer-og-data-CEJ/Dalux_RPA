@@ -1,7 +1,7 @@
 from jsonpath_ng.ext import parser
 
 
-def find_ean_indmelding(json) -> list[str] | None:
+def find_ean_indmelding(json) -> int | None:
     """
     Retunere det sidst tilføjet EAN-nummer i historiken, hvis der findes et.
     Arguments:
@@ -19,7 +19,7 @@ def find_ean_indmelding(json) -> list[str] | None:
         return None
 
 
-def find_psp_indmelding(json) -> list[str] | None:
+def find_psp_indmelding(json) -> int | None:
     """
     Retunere det sidst tilføjet PSP-nummer i historiken, hvis der findes et.
     Arguments:
