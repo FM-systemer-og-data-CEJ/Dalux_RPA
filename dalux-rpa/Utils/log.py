@@ -1,11 +1,22 @@
 import logging
-formatter = logging.Formatter('%(asctime)s %(message)s')
+from logging import FileHandler
+from logging import Logger
 
-def setup_logger(name, log_file, level=logging.INFO):
-    handler = logging.FileHandler(log_file)        
+formatter = logging.Formatter("%(asctime)s %(message)s")
+
+
+def setup_logger(name: str, log_file: str, level: int = logging.INFO) -> Logger:
+    """
+    Setting up a logger
+    Arguments:
+    - name: str
+    - log_file: str
+    - level = logging.info
+    """
+    handler: FileHandler = logging.FileHandler(log_file)
     handler.setFormatter(formatter)
 
-    logger = logging.getLogger(name)
+    logger: Logger = logging.getLogger(name)
     logger.setLevel(level)
     logger.addHandler(handler)
 
