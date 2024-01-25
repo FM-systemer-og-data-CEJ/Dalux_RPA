@@ -7,16 +7,16 @@ from RPAs.rum import rum_RPA
 from RPAs.asset import asset_RPA
 
 
-def main():
+def main() -> None:
     # Command line inputs.
-    workorder_id = int(sys.argv[1])
+    workorder_id: int = int(sys.argv[1])
     # For some unknown reason, python sees the arguemnt passed as a string and not two seperate
     # arguments when coming from the shell script.
-    flags = sys.argv[2]
-    flags = flags.split()
+    flags: str = sys.argv[2]
+    flags: str = flags.split()
 
-    total_sleep = 0
-    peek_counter = 0
+    total_sleep: int = 0
+    peek_counter: int = 0
     while 1:
         try:
             response = get_workorder(workorder_id)
@@ -26,7 +26,7 @@ def main():
 
         # ATTENTION. Doesn't work with python version earlier than 3.10
         if response.status_code == 200:
-            total_sleep = 0
+            total_sleep: int = 0
             for f in flags:
                 match f:
                     case "-E":
