@@ -1,8 +1,7 @@
 import logging
+import os
 from logging import FileHandler
 from logging import Logger
-
-formatter = logging.Formatter("%(asctime)s %(message)s")
 
 
 def setup_logger(name: str, log_file: str, level: int = logging.INFO) -> Logger:
@@ -13,11 +12,20 @@ def setup_logger(name: str, log_file: str, level: int = logging.INFO) -> Logger:
     - log_file: str
     - level = logging.info
     """
-    handler: FileHandler = logging.FileHandler(log_file)
-    handler.setFormatter(formatter)
+    default_log_dir = "logs/"
+
+    if not os.path.isdir(default_log_dir):
+        os.makedirs(default_log_dir)
+
+    log_file_path = os.path.join(default_log_dir, log_file)
 
     logger: Logger = logging.getLogger(name)
     logger.setLevel(level)
+
+    handler: FileHandler = logging.FileHandler(log_file_path)
+    formatter = logging.Formatter("%(asctime)s %(message)s")
+    handler.setFormatter(formatter)
+
     logger.addHandler(handler)
 
     return logger

@@ -1,1 +1,46 @@
-site_name: My Docs
+site_name: Dalux RPA Documentation
+
+repo_url: https://github.com/FM-systemer-og-data-CEJ/Dalux_RPA
+repo_name: DaluxRPA
+
+theme:
+  name: material
+  palette:
+    primary: blue grey
+    accent: orange
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - toc.follow
+    - navigation.indexes 
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - User Guide: usage.md
+  - About: about.md
+  - Reference:
+      - reference/index.md
+      - Main: reference/reference.md
+      - Modules: reference/modules.md
+    
+plugins:
+  - offline
+  - blog
+  - search
+  - tags
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: false
+            show_root_heading: true

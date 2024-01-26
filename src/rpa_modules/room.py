@@ -1,3 +1,13 @@
+"""
+This module contains functions related to room operations in the RPA system.
+
+It provides functionality to perform RPA operations for a room, including retrieving room information,
+parsing room data, and patching workorder descriptions.
+
+Functions:
+    rum_RPA: Perform RPA operations for a room.
+"""
+
 from utils.log import setup_logger
 from utils.fetch import get_room
 from utils.parserS import parser
@@ -7,6 +17,16 @@ rum_log = setup_logger("rum", "rum.log")
 
 
 def rum_RPA(w_id: int, json: dict[str, dict[str, int]]) -> None:
+    """
+    Perform RPA operations for a room.
+
+    Args:
+        w_id (int): The workorder ID.
+        json (dict[str, dict[str, int]]): The JSON data containing room information.
+
+    Returns:
+        None
+    """
     roomID: int = json["data"]["roomID"]
 
     if roomID is None:

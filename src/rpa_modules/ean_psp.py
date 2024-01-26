@@ -9,6 +9,16 @@ EAN_PSP_log: Logger = setup_logger("main", "EAN_PSP.log")
 
 
 def EAN_PSP_RPA(w_id, json) -> None:
+    """
+    Perform EAN and PSP patching for a given work order.
+
+    Args:
+        w_id: The ID of the work order.
+        json: The JSON data containing the work order information.
+
+    Returns:
+        None
+    """
     ean_skal_opdateres: bool = True
     psp_skal_opdateres: bool = True
 
