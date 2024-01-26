@@ -1,0 +1,11 @@
+[main.retry]
+SLEEP_TIME = 30
+RETRY_LIMIT = 300
+MAX_RETRIES = 20
+SUCCESS_CODE = 200
+PEEKS_PER_LONG_PEEK = 20
+
+[main.modules]
+EAN_PSP = true
+ROOM = false
+ASSET = false

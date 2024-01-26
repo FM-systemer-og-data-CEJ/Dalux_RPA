@@ -3,8 +3,8 @@ import requests
 from requests import Response
 import json
 from logging import Logger
-from Utils.config import api_key
-from Utils.log import setup_logger
+from utils.config import api_key
+from utils.log import setup_logger
 
 # URL samt nøgle til API.
 baseURL: str = "https://fm-api.dalux.com/api/v1"

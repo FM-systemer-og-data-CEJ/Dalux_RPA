@@ -1,7 +1,7 @@
 from jsonpath_ng.ext import parser
 
 
-def find_ean_indmelding(json) -> int | None:
+def find_ean_indmelding(json) -> str | None:
     """
     Retunere det sidst tilføjet EAN-nummer i historiken, hvis der findes et.
     Arguments:

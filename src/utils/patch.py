@@ -1,5 +1,5 @@
 import requests
-from Utils.fetch import baseURL, headers
+from utils.fetch import baseURL, headers
 
 # Patch metode til ean.
 def patch_ean(id, ean):

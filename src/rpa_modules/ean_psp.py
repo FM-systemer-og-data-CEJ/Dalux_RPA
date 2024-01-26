@@ -1,8 +1,8 @@
 from logging import Logger
 from typing import Optional
-from Utils.parserS import parser, find_ean_indmelding, find_psp_indmelding
-from Utils.log import setup_logger
-from Utils.patch import patch_ean_psp, patch_ean, patch_psp
+from utils.parserS import parser, find_ean_indmelding, find_psp_indmelding
+from utils.log import setup_logger
+from utils.patch import patch_ean_psp, patch_ean, patch_psp
 
 # Opretter en log.
 EAN_PSP_log: Logger = setup_logger("main", "EAN_PSP.log")

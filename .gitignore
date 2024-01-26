@@ -3,6 +3,16 @@
 /setup/run
 /src/config.py
 
+# IDE and Editor Folders/Files
+.idea/
+.vscode/
+.vs/
+*.sublime-*
+*.swp
+*.swo
+*~
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
